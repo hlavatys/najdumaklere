@@ -1,0 +1,642 @@
+<!doctype html>
+<html lang="cs">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Najdu makléře | Plzeň a okolí</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+/* Rozvržení: „leták na webu“. Ručně psané nadpisy a skicované rámečky jako na tištěném letáku, zvýrazňovač jako jediný akcent, zbytek tiché a čitelné */
+:root{
+  --paper:#fafaf6;
+  --card:#ffffff;
+  --ink:#1a1a18;
+  --ink-soft:#55554f;
+  --line:#26261f;
+  --hair:#d9d8cf;
+  --wash:#f0efe7;
+  --marker:#ffdd55;
+  --on-marker:#1a1a18;
+  --ok:#1d6b3b;
+  --no:#a12f2f;
+  --display:"Patrick Hand","Comic Neue","Segoe Print",cursive;
+  --body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --sketch:255px 15px 225px 15px / 15px 225px 15px 255px;
+  --sketch2:15px 255px 15px 225px / 225px 15px 255px 15px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#151513;--card:#1d1d1a;--ink:#f3f2ea;--ink-soft:#bdbcb2;--line:#e2e1d8;--hair:#3a3a35;--wash:#23231f;--marker:#d9b62e;--on-marker:#151513;--ok:#86d9a2;--no:#f2a0a0;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#151513;--card:#1d1d1a;--ink:#f3f2ea;--ink-soft:#bdbcb2;--line:#e2e1d8;--hair:#3a3a35;--wash:#23231f;--marker:#d9b62e;--on-marker:#151513;--ok:#86d9a2;--no:#f2a0a0;color-scheme:dark}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);font-size:1.0625rem;line-height:1.6}
+.wrap{max-width:68rem;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+.narrow{max-width:44rem}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.08;text-wrap:balance;margin:0}
+h1{font-size:clamp(2.7rem,7.5vw,5rem);text-transform:uppercase}
+h2{font-size:clamp(2.1rem,5vw,3rem)}
+h3{font-size:1.6rem}
+p{margin:0}
+a{color:inherit}
+.hl{background:linear-gradient(transparent 52%,var(--marker) 52%,var(--marker) 90%,transparent 90%);padding:0 .12em}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:4px}
+.muted{color:var(--ink-soft)}
+.eyebrow{font-family:var(--display);font-size:1.35rem;color:var(--ink-soft)}
+
+/* hlavička */
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--paper);z-index:20}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(6px);border-bottom:2px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:18px;padding-block:10px}
+.brand{font-family:var(--display);font-size:1.55rem;text-decoration:none;white-space:nowrap}
+.nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav a{text-decoration:none;padding:.3rem .65rem;border-radius:999px;font-size:.95rem}
+.nav a:hover{background:var(--wash)}
+.top .call{font-family:var(--display);font-size:1.35rem;text-decoration:none;background:var(--ink);color:var(--paper);padding:.25rem .9rem;border-radius:999px;white-space:nowrap}
+@media (max-width:860px){.nav{display:none}.top .call{margin-left:auto}}
+
+section{padding-block:clamp(3rem,8vw,5.5rem)}
+.band{background:var(--wash)}
+.stack{display:flex;flex-direction:column;gap:1.1rem}
+.lead{font-size:1.2rem;color:var(--ink-soft);max-width:40rem}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font:inherit;font-weight:700;padding:.75rem 1.3rem;border:2px solid var(--line);border-radius:999px;background:var(--ink);color:var(--paper);text-decoration:none;cursor:pointer;width:fit-content}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.mark{background:var(--marker);color:var(--on-marker)}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+
+/* hero */
+.hero{padding-block:clamp(2.5rem,7vw,4.5rem)}
+.hero-grid{display:grid;grid-template-columns:1.35fr 1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}}
+.hero .lead{font-size:1.25rem}
+.promise{border:2.5px solid var(--line);border-radius:var(--sketch);padding:1.3rem 1.4rem;background:var(--card);display:flex;flex-direction:column;gap:.8rem}
+.promise h3{font-size:1.5rem}
+.promise ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:.55rem}
+.promise li{display:grid;grid-template-columns:1.4rem 1fr;gap:.5rem}
+.promise li::before{content:"✓";color:var(--ok);font-weight:700}
+
+/* tři cesty */
+.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:1.8rem}
+@media (max-width:860px){.paths{grid-template-columns:1fr}}
+.path{display:flex;flex-direction:column;gap:.5rem;padding:1.3rem 1.3rem 1.2rem;border:2.5px solid var(--line);border-radius:var(--sketch);background:var(--card);text-decoration:none;transition:transform .15s ease}
+.path:nth-child(2){border-radius:var(--sketch2)}
+.path:hover{transform:rotate(-.5deg) translateY(-3px)}
+.path b{font-family:var(--display);font-weight:400;font-size:1.9rem;line-height:1.05}
+.path span{color:var(--ink-soft)}
+.path em{font-style:normal;font-weight:700;margin-top:auto;padding-top:.4rem}
+.path.tip{background:var(--marker);color:var(--on-marker)}
+.path.tip span{color:var(--on-marker)}
+
+/* síť */
+.net-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(1.5rem,4vw,3rem);align-items:center}
+@media (max-width:860px){.net-grid{grid-template-columns:1fr}}
+.net svg{width:100%;height:auto;display:block}
+.net .node{fill:var(--card);stroke:var(--line);stroke-width:2.5}
+.net .me{fill:var(--marker);stroke:var(--line);stroke-width:2.5}
+.net .edge{stroke:var(--line);stroke-width:2;fill:none;stroke-dasharray:6 6}
+.net .dot{fill:var(--ink-soft)}
+.net text{font-family:var(--display);fill:var(--ink);font-size:22px}
+.net .small{font-size:17px;fill:var(--ink-soft)}
+.net .onmark{fill:var(--on-marker)}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media (max-width:640px){.facts{grid-template-columns:1fr}}
+.fact{border-top:2.5px solid var(--line);padding-top:.6rem}
+.fact b{display:block;font-family:var(--display);font-weight:400;font-size:1.5rem;line-height:1.1;margin-bottom:.2rem}
+
+/* srovnání */
+.cmp-wrap{overflow-x:auto;margin-top:.6rem}
+table.cmp{width:100%;border-collapse:collapse;min-width:34rem}
+.cmp th,.cmp td{text-align:left;vertical-align:top;padding:.62rem .85rem}
+.cmp thead th{font-family:var(--display);font-weight:400;font-size:1.5rem;border-bottom:2.5px solid var(--line)}
+.cmp thead th:first-child{width:22%}
+.cmp tbody th{font-weight:700;font-size:.95rem}
+.cmp td{border-bottom:1.5px solid var(--hair)}
+.cmp tbody th{border-bottom:1.5px solid var(--hair)}
+.cmp .group th{font-family:var(--display);font-weight:400;font-size:1.35rem;padding-top:1.3rem;border-bottom:2px solid var(--line);color:var(--ink)}
+.cmp .pro{background:var(--card);border-left:3px solid var(--line);border-right:3px solid var(--line)}
+.cmp thead .pro{border-top:3px solid var(--line)}
+.cmp tbody tr:last-child .pro{border-bottom:3px solid var(--line)}
+.band .cmp .pro{background:var(--card)}
+.x,.v{font-weight:700;margin-right:.35rem}
+.x{color:var(--no)}.v{color:var(--ok)}
+.fine{font-size:.92rem;color:var(--ink-soft)}
+
+/* proces */
+ol.flow{list-style:none;margin:1.4rem 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:22px 18px;counter-reset:f}
+@media (max-width:860px){ol.flow{grid-template-columns:1fr 1fr}}
+@media (max-width:540px){ol.flow{grid-template-columns:1fr}}
+ol.flow li{counter-increment:f;display:flex;flex-direction:column;gap:.35rem}
+ol.flow li::before{content:counter(f);font-family:var(--display);font-size:1.6rem;width:2.5rem;height:2.5rem;display:grid;place-items:center;border:2.5px solid var(--line);border-radius:50% 45% 52% 47%;background:var(--card)}
+ol.flow strong{font-size:1.05rem}
+ol.flow p{color:var(--ink-soft);font-size:.98rem}
+
+/* problémové nemovitosti */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(15.5rem,1fr));gap:16px;margin-top:1.4rem}
+.card{background:var(--card);border:2px solid var(--line);border-radius:var(--sketch2);padding:1.15rem 1.2rem;display:flex;flex-direction:column;gap:.45rem}
+.card h3{font-size:1.55rem}
+.card p{font-size:.98rem;color:var(--ink-soft)}
+.card .key{color:var(--ink);font-weight:700;font-size:.95rem}
+
+/* tip */
+.tip-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:clamp(1.5rem,4vw,3rem);align-items:start}
+@media (max-width:860px){.tip-grid{grid-template-columns:1fr}}
+.big{font-family:var(--display);font-size:clamp(4rem,14vw,7rem);line-height:.95}
+ol.steps{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1rem;counter-reset:s}
+ol.steps li{display:grid;grid-template-columns:2.6rem 1fr;gap:.9rem;counter-increment:s}
+ol.steps li::before{content:counter(s);font-family:var(--display);font-size:1.5rem;width:2.4rem;height:2.4rem;display:grid;place-items:center;border:2px solid var(--line);border-radius:50% 46% 52% 48%;background:var(--card)}
+ol.steps p{color:var(--ink-soft)}
+.note{font-size:.95rem;color:var(--ink-soft);border-left:3px solid var(--line);padding-left:.9rem}
+
+/* financování */
+.fin{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:16px;margin-top:1.2rem}
+.fin div{border-top:2.5px solid var(--line);padding-top:.7rem}
+.fin b{display:block;font-family:var(--display);font-weight:400;font-size:1.5rem;margin-bottom:.2rem}
+
+/* otázky */
+details{border-bottom:1.5px solid var(--hair);padding-block:.8rem}
+summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:1rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--display);font-size:1.6rem;line-height:1}
+details[open] summary::after{content:"−"}
+details p{margin-top:.5rem;color:var(--ink-soft)}
+
+/* formulář */
+.form-box{background:var(--card);border:3px solid var(--line);border-radius:var(--sketch);padding:clamp(1.2rem,4vw,2rem)}
+.progress{display:flex;gap:8px;margin-bottom:1.2rem}
+.progress i{flex:1;height:6px;border-radius:999px;background:var(--hair)}
+.progress i.on{background:var(--ink)}
+fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:1rem;min-width:0}
+legend{font-family:var(--display);font-size:1.8rem;line-height:1.1;margin-bottom:.4rem;padding:0}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));gap:10px}
+.opt{position:relative}
+.opt input{position:absolute;opacity:0;pointer-events:none}
+.opt span{display:block;border:2px solid var(--hair);border-radius:12px;padding:.7rem .9rem;cursor:pointer;background:var(--paper)}
+.opt span small{display:block;color:var(--ink-soft);font-size:.88rem}
+.opt input:checked+span{border-color:var(--line);background:var(--marker);color:var(--on-marker)}
+.opt input:checked+span small{color:var(--on-marker)}
+.opt input:focus-visible+span{outline:3px solid var(--ink);outline-offset:2px}
+label.f{display:flex;flex-direction:column;gap:.3rem;font-weight:700;font-size:.95rem}
+label.f input,label.f select,label.f textarea{font:inherit;font-weight:400;padding:.65rem .8rem;border:2px solid var(--hair);border-radius:10px;background:var(--paper);color:var(--ink);width:100%}
+label.f input:focus,label.f select:focus,label.f textarea:focus{border-color:var(--line);outline:none}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:560px){.two{grid-template-columns:1fr}}
+.check{display:grid;grid-template-columns:1.3rem 1fr;gap:.6rem;font-size:.93rem;color:var(--ink-soft);align-items:start}
+.check input{width:1.15rem;height:1.15rem;margin-top:.2rem}
+.err{color:var(--no);font-size:.93rem;min-height:1.3em}
+.form-nav{display:flex;justify-content:space-between;gap:10px;margin-top:1.2rem;flex-wrap:wrap}
+.summary{white-space:pre-wrap;background:var(--wash);border-radius:10px;padding:1rem;font-size:.95rem}
+
+.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:2.5px solid var(--line)}
+.tabs [role=tab]{font:inherit;font-weight:700;background:transparent;color:var(--ink-soft);border:2px solid transparent;border-bottom:0;border-radius:12px 12px 0 0;padding:.55rem 1rem;cursor:pointer;margin-bottom:-2.5px}
+.tabs [role=tab][aria-selected=true]{background:var(--card);color:var(--ink);border-color:var(--line);border-bottom:2.5px solid var(--card)}
+.tabs + .form-box{border-top-left-radius:0}
+.done-title{font-family:var(--display);font-size:1.9rem;line-height:1.1}
+.form-box[hidden]{display:none!important}
+/* kontakt */
+.contact{text-align:center;display:flex;flex-direction:column;gap:.7rem;align-items:center}
+.contact .num{font-family:var(--display);font-size:clamp(3rem,12vw,5rem);line-height:1;user-select:all}
+.copied{font-size:.9rem;color:var(--ok);min-height:1.3em}
+
+footer{padding-block:2rem;font-size:.88rem;color:var(--ink-soft);border-top:2px solid var(--line)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem 2rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.path{transition:none}.path:hover{transform:none}}
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#uvod">najdumaklere.cz</a>
+    <nav class="nav" aria-label="Hlavní">
+      <a href="#prodat">Chci prodat</a>
+      <a href="#problem">Složité případy</a>
+      <a href="#tip">Vím o někom</a>
+      <a href="#finance">Hypotéka</a>
+      <a href="#formular" data-tab="tip">Poslat tip</a>
+      <a href="#formular" data-tab="prodej">Formulář</a>
+    </nav>
+    <a class="call" href="tel:+420732888546">732 888 546</a>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="uvod">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div class="stack">
+          <p class="eyebrow">Plzeň a okolí</p>
+          <h1>Zvažujete prodat nemovitost?</h1>
+          <p class="lead">Znám makléře z několika realitních kanceláří. Každý má svoje kupce, kteří v okolí neúspěšně hledali a pořád čekají. Podle vaší nemovitosti vyberu toho <span class="hl">správného</span> a přes mě ušetříte.</p>
+          <div class="row">
+            <a class="btn" href="#formular" data-tab="prodej">Chci nezávaznou radu</a>
+            <a class="btn ghost" href="tel:+420732888546">Zavolat 732 888 546</a>
+          </div>
+        </div>
+        <aside class="promise" aria-label="Co ode mě dostanete">
+          <h3>Co ode mě dostanete</h3>
+          <ul>
+            <li>Makléře vybraného podle typu a náročnosti nemovitosti</li>
+            <li>Oslovení kupců z databází více realitek najednou</li>
+            <li>Lepší podmínky, než kdybyste šli do realitky sami</li>
+            <li>Pomoc s financováním, pro vás i pro kupce</li>
+            <li>Jednoho člověka na telefonu od začátku do konce</li>
+          </ul>
+        </aside>
+      </div>
+
+      <div class="paths">
+        <a class="path" href="#prodat"><b>Chci prodat</b><span>Byt, dům, chalupa nebo pozemek. Jak to probíhá a co vám to přinese.</span><em>Jak to funguje →</em></a>
+        <a class="path" href="#problem"><b>Mám složitý případ</b><span>Exekuce, insolvence, podíl, dědictví nebo nemovitost ve špatném stavu.</span><em>Co se dá dělat →</em></a>
+        <a class="path tip" href="#tip"><b>Vím o někom</b><span>Znáte někoho, kdo prodává? Za úspěšný tip vám dám 5 000 Kč.</span><em>Jak dát tip →</em></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="sit">
+    <div class="wrap net-grid">
+      <div class="stack">
+        <p class="eyebrow">Proč přes mě</p>
+        <h2>Jedna realitka má své kupce. Já jich znám víc.</h2>
+        <p class="lead">Když jdete do jedné kanceláře, nabídku uvidí hlavně její klienti. Já mám kontakty na makléře z více realitek. Každý z nich má v databázi lidi, kteří už v okolí chtěli koupit a nevyšlo jim to. Ty můžu oslovit dřív, než se nemovitost vůbec objeví na portálech.</p>
+        <div class="facts">
+          <div class="fact"><b>Specialista</b><span class="muted">Na byty, domy, pozemky, chalupy i historické stavby jiný makléř.</span></div>
+          <div class="fact"><b>Hotoví kupci</b><span class="muted">Lidé z databází, kteří už hledají a mají připravené peníze.</span></div>
+          <div class="fact"><b>Lepší podmínky</b><span class="muted">Díky doporučení ode mě máte výhodnější podmínky.</span></div>
+        </div>
+      </div>
+      <figure class="net" aria-label="Schéma: vy, já a makléři z více realitek, každý se svými kupci" style="margin:0">
+        <svg viewBox="0 0 520 420" role="img">
+          <path class="edge" d="M90 210 C 160 210, 170 210, 230 210"/>
+          <path class="edge" d="M300 190 C 340 130, 360 95, 395 85"/>
+          <path class="edge" d="M305 210 L 395 210"/>
+          <path class="edge" d="M300 230 C 340 290, 360 325, 395 335"/>
+          <ellipse class="node" cx="60" cy="210" rx="52" ry="38"/>
+          <text x="60" y="217" text-anchor="middle">Vy</text>
+          <ellipse class="me" cx="267" cy="210" rx="44" ry="40"/>
+          <text class="onmark" x="267" y="217" text-anchor="middle">Já</text>
+          <rect class="node" x="370" y="52" width="140" height="66" rx="14"/>
+          <text x="440" y="82" text-anchor="middle">Makléř A</text>
+          <text class="small" x="440" y="104" text-anchor="middle">byty, sídliště</text>
+          <rect class="node" x="370" y="177" width="140" height="66" rx="14"/>
+          <text x="440" y="207" text-anchor="middle">Makléř B</text>
+          <text class="small" x="440" y="229" text-anchor="middle">domy, pozemky</text>
+          <rect class="node" x="370" y="302" width="140" height="66" rx="14"/>
+          <text x="440" y="332" text-anchor="middle">Makléř C</text>
+          <text class="small" x="440" y="354" text-anchor="middle">složité případy</text>
+          <g class="dot">
+            <circle cx="384" cy="34" r="6"/><circle cx="402" cy="30" r="6"/><circle cx="420" cy="34" r="6"/><circle cx="438" cy="30" r="6"/><circle cx="456" cy="34" r="6"/>
+            <circle cx="384" cy="160" r="6"/><circle cx="402" cy="156" r="6"/><circle cx="420" cy="160" r="6"/><circle cx="438" cy="156" r="6"/>
+            <circle cx="384" cy="388" r="6"/><circle cx="402" cy="392" r="6"/><circle cx="420" cy="388" r="6"/><circle cx="438" cy="392" r="6"/><circle cx="456" cy="388" r="6"/><circle cx="474" cy="392" r="6"/>
+          </g>
+          <text class="small" x="267" y="282" text-anchor="middle">vyberu a oslovím</text>
+          <text class="small" x="60" y="275" text-anchor="middle">jeden hovor</text>
+        </svg>
+        <figcaption class="fine" style="margin-top:.4rem">Tečky jsou kupci v databázích jednotlivých makléřů.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="prodat">
+    <div class="wrap stack">
+      <p class="eyebrow">Chci prodat</p>
+      <h2>Prodej sám, nebo s makléřem?</h2>
+      <p class="lead">Rozdíl není jen v ceně. Podívejte se, co všechno dobrý makléř udělá za vás.</p>
+      <div class="cmp-wrap">
+        <table class="cmp">
+          <thead><tr><th scope="col"></th><th scope="col">Prodej sám</th><th scope="col" class="pro">S makléřem přes mě</th></tr></thead>
+          <tbody>
+            <tr class="group"><th colspan="3" scope="colgroup">Cena</th></tr>
+            <tr><th scope="row">Nacenění</th><td><span class="x" aria-hidden="true">✗</span>Odhad podle inzerátů sousedů</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Cena podle skutečných prodejů v okolí</td></tr>
+            <tr><th scope="row">Znalecký posudek</th><td><span class="x" aria-hidden="true">✗</span>Musíte shánět sami</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Zajistí ověřeného znalce, když je potřeba</td></tr>
+            <tr><th scope="row">Vyjednávání</th><td><span class="x" aria-hidden="true">✗</span>Emoce, slevy pod tlakem</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Zkušený vyjednavač drží cenu</td></tr>
+
+            <tr class="group"><th colspan="3" scope="colgroup">Prezentace</th></tr>
+            <tr><th scope="row">Fotky</th><td><span class="x" aria-hidden="true">✗</span>Z mobilu, tmavé a křivé</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Profesionální fotograf</td></tr>
+            <tr><th scope="row">Záběry z dronu</th><td><span class="x" aria-hidden="true">✗</span>Bez nich</td><td class="pro"><span class="v" aria-hidden="true">✓</span>U domů a pozemků pohled shora na celý pozemek</td></tr>
+            <tr><th scope="row">Home staging</th><td><span class="x" aria-hidden="true">✗</span>Prázdné nebo přeplněné pokoje</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Úprava interiéru, aby si kupec uměl představit bydlení</td></tr>
+            <tr><th scope="row">Inzerce</th><td><span class="x" aria-hidden="true">✗</span>Jeden inzerát, který zapadne</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Hlavní portály, sociální sítě, dobře napsaný text</td></tr>
+
+            <tr class="group"><th colspan="3" scope="colgroup">Kupci</th></tr>
+            <tr><th scope="row">Zájemci</th><td><span class="x" aria-hidden="true">✗</span>Jen ti, kdo náhodou uvidí inzerát</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Databáze kupců z více realitek, kteří už v okolí hledali</td></tr>
+            <tr><th scope="row">Prohlídky</th><td><span class="x" aria-hidden="true">✗</span>Telefony a víkendy navíc</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Makléř je domluví i provede</td></tr>
+            <tr><th scope="row">Financování kupce</th><td><span class="x" aria-hidden="true">✗</span>Kupec bez hypotéky odpadne</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Doporučím hypotečního specialistu</td></tr>
+
+            <tr class="group"><th colspan="3" scope="colgroup">Právo a bezpečnost</th></tr>
+            <tr><th scope="row">Smlouvy</th><td><span class="x" aria-hidden="true">✗</span>Vzory z internetu, riziko chyb</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Kompletní právní servis</td></tr>
+            <tr><th scope="row">Peníze</th><td><span class="x" aria-hidden="true">✗</span>Platba „na ruku“ nebo předem</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Úschova u advokáta, notáře nebo v bance</td></tr>
+            <tr><th scope="row">Kupec</th><td><span class="x" aria-hidden="true">✗</span>Riziko podvodu</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Prověření kupci</td></tr>
+
+            <tr class="group"><th colspan="3" scope="colgroup">Čas a starosti</th></tr>
+            <tr><th scope="row">Dokumenty</th><td><span class="x" aria-hidden="true">✗</span>Úřady, katastr, energetický štítek</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Makléř zajistí, co je potřeba</td></tr>
+            <tr><th scope="row">Předání</th><td><span class="x" aria-hidden="true">✗</span>Měřáky, přepisy energií, protokol</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Předávací protokol a přepisy pohlídá</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="fine">Rozsah služeb se u jednotlivých makléřů liší. Co přesně kdo nabízí, vám vždy řeknu předem.</p>
+
+      <h3 style="margin-top:1.6rem">Jak to probíhá</h3>
+      <ol class="flow">
+        <li><strong>Ozvete se</strong><p>Zavoláte nebo vyplníte krátký formulář. Nezávazně, nic nepodepisujete.</p></li>
+        <li><strong>Vyberu makléře</strong><p>Podle typu nemovitosti, lokality a náročnosti. Zjistím, kdo má v databázi vhodné kupce.</p></li>
+        <li><strong>Nacenění</strong><p>Makléř stanoví cenu podle skutečných prodejů, případně zajistí znalecký posudek.</p></li>
+        <li><strong>Prezentace a kupci</strong><p>Fotky, dron, home staging podle potřeby. Nejdřív se oslovují kupci z databází, pak portály.</p></li>
+        <li><strong>Financování</strong><p>Když kupec potřebuje hypotéku, nebo vy na nové bydlení, doporučím specialistu.</p></li>
+        <li><strong>Smlouvy a předání</strong><p>Rezervace, kupní smlouva, úschova peněz, katastr a předání. Vy jen podepisujete.</p></li>
+      </ol>
+      <div class="row" style="margin-top:1rem"><a class="btn" href="#formular" data-tab="prodej" data-pick="p-what-sell">Chci poradit s prodejem</a></div>
+    </div>
+  </section>
+
+  <section class="band" id="problem">
+    <div class="wrap stack">
+      <p class="eyebrow">Složité případy</p>
+      <h2>Exekuce, insolvence, podíl nebo dědictví?</h2>
+      <p class="lead">I taková nemovitost se dá prodat, jen to chce makléře, který to už řešil. Tady je základní přehled, co jde a co je potřeba.</p>
+      <div class="cards">
+        <article class="card">
+          <h3>Exekuce</h3>
+          <p>Na nemovitosti platí zákaz s ní nakládat. Prodej je ale možný se souhlasem exekutora a z peněz se uhradí dluh.</p>
+          <p class="key">Dobrovolný prodej bývá výhodnější než dražba, která často končí pod tržní cenou.</p>
+        </article>
+        <article class="card">
+          <h3>Insolvence</h3>
+          <p>O prodeji majetku v insolvenci rozhoduje insolvenční správce. Makléř s ním může spolupracovat a pomoct prodat za lepší cenu.</p>
+          <p class="key">Čím dřív se to řeší, tím víc možností zůstává.</p>
+        </article>
+        <article class="card">
+          <h3>Spoluvlastnický podíl</h3>
+          <p>Svůj podíl můžete prodat i bez souhlasu ostatních spoluvlastníků. U podílu získaného děděním mají ostatní spoluvlastníci 6 měsíců předkupní právo.</p>
+          <p class="key">Podíl se prodává jinak než celá nemovitost, proto je důležitý zkušený makléř.</p>
+        </article>
+        <article class="card">
+          <h3>Dědictví</h3>
+          <p>Prodat můžete po skončení dědického řízení, kdy usnesení notáře nabude právní moci. Do té doby se dá připravit nacenění i kupec.</p>
+          <p class="key">Víc dědiců? Dá se prodat společně, nebo jeden vyplatí ostatní.</p>
+        </article>
+        <article class="card">
+          <h3>Špatný stav</h3>
+          <p>Zatékající střecha, vlhkost, nedokončená stavba. Pro takové nemovitosti existují kupci, kteří rekonstrukci hledají.</p>
+          <p class="key">Neopravujte nic předem, nejdřív se poraďte, co se vyplatí.</p>
+        </article>
+        <article class="card">
+          <h3>Zástava a břemena</h3>
+          <p>Hypotéka na nemovitosti prodej nebrání, splatí se z kupní ceny. Věcné břemeno nebo nejasné hranice pozemku se dají vyřešit předem.</p>
+          <p class="key">Stačí list vlastnictví a makléř řekne, co s tím.</p>
+        </article>
+      </div>
+      <p class="fine">Jde o základní informace, ne o právní radu. Konkrétní postup vždy řeší makléř s advokátem podle vaší situace.</p>
+      <div class="row"><a class="btn" href="#formular" data-tab="prodej" data-pick="p-what-hard">Chci poradit se složitým případem</a></div>
+    </div>
+  </section>
+
+  <section id="finance">
+    <div class="wrap stack">
+      <p class="eyebrow">Hypotéka a financování</p>
+      <h2>Celý proces, i peníze</h2>
+      <p class="lead">Prodej často souvisí s koupí nového bydlení, splacením staré hypotéky nebo tím, že kupec potřebuje úvěr. Na to mám ověřené hypoteční specialisty.</p>
+      <div class="fin">
+        <div><b>Hypotéka pro kupce</b><span class="muted">Kupec s vyřízeným financováním znamená jistější a rychlejší prodej.</span></div>
+        <div><b>Nové bydlení pro vás</b><span class="muted">Když prodáváte, abyste koupili jinde, pomůžu sladit prodej s novou hypotékou.</span></div>
+        <div><b>Splacení staré hypotéky</b><span class="muted">Zbytek úvěru se splatí z kupní ceny. Specialista ohlídá poplatky a termíny.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="tip">
+    <div class="wrap tip-grid">
+      <div class="stack">
+        <p class="eyebrow">Vím o někom</p>
+        <h2>Za úspěšný tip</h2>
+        <p class="big"><span class="hl">5 000 Kč</span></p>
+        <p class="lead">Soused stěhuje rodiče do domova, známý zdědil chalupu, kolega řeší rozvod a byt. Stačí mi dát vědět.</p>
+      </div>
+      <div class="stack">
+        <h3>Jak to funguje</h3>
+        <ol class="steps">
+          <li><div><strong>Zeptáte se dotyčného</strong><p>Jestli souhlasí, že mu zavolám. Bez jeho souhlasu kontakt předávat nemůžu.</p></div></li>
+          <li><div><strong>Pošlete mi kontakt</strong><p>Jméno, telefon a o jakou nemovitost jde. A vaše jméno a telefon, ať vím, komu poděkovat.</p></div></li>
+          <li><div><strong>Po prodeji vám zaplatím</strong><p>Odměnu vyplácím po podpisu kupní smlouvy a zaplacení provize. Převodem nebo hotově proti potvrzení.</p></div></li>
+        </ol>
+        <p class="note">Úspěšný tip znamená, že prodej proběhne přes makléře, kterého jsem doporučil, a o nemovitosti jsem do té doby nevěděl.</p>
+        <a class="btn mark" href="#formular" data-tab="tip">Poslat tip přes formulář</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="otazky">
+    <div class="wrap narrow stack">
+      <h2>Časté otázky</h2>
+      <div>
+        <details><summary>Kolik mě to stojí?</summary><p>Rozhovor se mnou je nezávazný. Provizi platíte makléři z prodeje a díky mému doporučení za lepších podmínek. Přesné podmínky vám řeknu podle konkrétní nemovitosti.</p></details>
+        <details><summary>Proč nejít rovnou do realitky?</summary><p>Můžete. Jedna realitka ale osloví hlavně svoje kupce. Já znám makléře z více kanceláří, vím, kdo se na co hodí, a můžu oslovit kupce z více databází.</p></details>
+        <details><summary>Jste makléř?</summary><p>Nejsem, makléře vám doporučím a zůstávám vám k dispozici po celou dobu. Prodej vede makléř a jeho kancelář, včetně smluv a úschovy peněz.</p></details>
+        <details><summary>Jak rychle se nemovitost prodá?</summary><p>Záleží na typu, ceně a lokalitě. Když makléř najde kupce ve své databázi, může to být během pár týdnů. Běžně počítejte se dvěma až třemi měsíci.</p></details>
+        <details><summary>Kdy dostanu odměnu za tip?</summary><p>Po podpisu kupní smlouvy a zaplacení provize. Obvykle během několika týdnů až měsíců od vašeho tipu.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="formular">
+    <div class="wrap narrow stack">
+      <p class="eyebrow">Formulář</p>
+      <h2>Napište mi, ozvu se</h2>
+      <p class="muted">Vyberte, s čím se ozýváte. Zpravidla se vám ozvu do druhého dne.</p>
+      <div class="tabs" role="tablist" aria-label="Typ zprávy">
+        <button type="button" role="tab" id="tab-prodej" aria-controls="panel-prodej" aria-selected="true">Prodej a poradenství</button>
+        <button type="button" role="tab" id="tab-tip" aria-controls="panel-tip" aria-selected="false">Poslat tip</button>
+        <button type="button" role="tab" id="tab-dotaz" aria-controls="panel-dotaz" aria-selected="false">Rychlý dotaz</button>
+      </div>
+
+      <!-- 1) PRODEJ: vícekrokový -->
+      <form class="form-box lead-form" id="panel-prodej" role="tabpanel" aria-labelledby="tab-prodej" data-form="prodej" novalidate>
+        <div class="progress" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+        <fieldset data-step>
+          <legend>Co řešíte?</legend>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="co_resite" id="p-what-sell" value="Chci prodat"><span>Chci prodat<small>byt, dům, chalupu, pozemek</small></span></label>
+            <label class="opt"><input type="radio" name="co_resite" id="p-what-hard" value="Složitý případ"><span>Složitý případ<small>exekuce, insolvence, podíl, dědictví</small></span></label>
+            <label class="opt"><input type="radio" name="co_resite" id="p-what-fin" value="Hypotéka"><span>Hypotéka<small>financování koupě nebo prodeje</small></span></label>
+            <label class="opt"><input type="radio" name="co_resite" id="p-what-info" value="Jen se poradit"><span>Jen se poradit<small>zatím zjišťuji možnosti</small></span></label>
+          </div>
+        </fieldset>
+        <fieldset data-step hidden>
+          <legend>O jakou nemovitost jde?</legend>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="typ" id="p-t-byt" value="Byt"><span>Byt</span></label>
+            <label class="opt"><input type="radio" name="typ" id="p-t-dum" value="Rodinný dům"><span>Rodinný dům</span></label>
+            <label class="opt"><input type="radio" name="typ" id="p-t-chal" value="Chalupa nebo chata"><span>Chalupa, chata</span></label>
+            <label class="opt"><input type="radio" name="typ" id="p-t-poz" value="Pozemek"><span>Pozemek</span></label>
+            <label class="opt"><input type="radio" name="typ" id="p-t-pod" value="Podíl"><span>Podíl</span></label>
+            <label class="opt"><input type="radio" name="typ" id="p-t-jine" value="Jiné"><span>Jiné</span></label>
+          </div>
+          <div class="two">
+            <label class="f" for="p-obec">Obec nebo část Plzně<input id="p-obec" name="obec" type="text" placeholder="např. Plzeň, Bolevec"></label>
+            <label class="f" for="p-kdy">Kdy chcete prodat<select id="p-kdy" name="kdy"><option>Co nejdřív</option><option>Do půl roku</option><option>Zatím jen zjišťuji</option></select></label>
+          </div>
+          <label class="f" for="p-pozn">Něco navíc, co mám vědět<textarea id="p-pozn" name="poznamka" rows="3" placeholder="stav, exekuce, kolik je vlastníků, cokoliv"></textarea></label>
+        </fieldset>
+        <fieldset data-step hidden>
+          <legend>Kam se vám ozvu?</legend>
+          <div class="two">
+            <label class="f" for="p-jmeno">Jméno<input id="p-jmeno" name="jmeno" type="text" autocomplete="name" data-req="Napište prosím své jméno."></label>
+            <label class="f" for="p-tel">Telefon<input id="p-tel" name="telefon" type="tel" autocomplete="tel" inputmode="tel" data-tel></label>
+          </div>
+          <label class="f" for="p-mail">E-mail, nepovinný<input id="p-mail" name="email" type="email" autocomplete="email"></label>
+          <label class="f" for="p-cas">Kdy se vám hodí zavolat<select id="p-cas" name="kdy_volat"><option>Kdykoliv</option><option>Dopoledne</option><option>Odpoledne</option><option>Večer</option></select></label>
+          <label class="check" for="p-gdpr"><input type="checkbox" id="p-gdpr" name="souhlas" value="ano" data-must="Bez souhlasu se vám nemůžu ozvat."><span>Souhlasím, že mě budete kontaktovat kvůli mému dotazu.</span></label>
+        </fieldset>
+        <div class="done stack" hidden></div>
+        <p class="err" aria-live="polite"></p>
+        <div class="form-nav">
+          <button type="button" class="btn ghost js-back" hidden>Zpět</button>
+          <button type="submit" class="btn js-next" style="margin-left:auto">Pokračovat</button>
+        </div>
+      </form>
+
+      <!-- 2) TIP -->
+      <form class="form-box lead-form" id="panel-tip" role="tabpanel" aria-labelledby="tab-tip" data-form="tip" novalidate hidden>
+        <fieldset>
+          <legend>O kom víte?</legend>
+          <p class="muted" style="margin-top:-.4rem">Za úspěšný tip vám dám 5 000 Kč.</p>
+          <div class="two">
+            <label class="f" for="t-jmeno">Jméno prodávajícího<input id="t-jmeno" name="prodavajici_jmeno" type="text" data-req="Napište prosím jméno prodávajícího."></label>
+            <label class="f" for="t-tel">Jeho telefon<input id="t-tel" name="prodavajici_telefon" type="tel" inputmode="tel" data-tel="Zkontrolujte prosím telefon prodávajícího."></label>
+          </div>
+          <div class="two">
+            <label class="f" for="t-typ">Nemovitost<select id="t-typ" name="typ"><option>Byt</option><option>Rodinný dům</option><option>Chalupa nebo chata</option><option>Pozemek</option><option>Podíl</option><option>Nevím přesně</option></select></label>
+            <label class="f" for="t-obec">Obec nebo část Plzně<input id="t-obec" name="obec" type="text"></label>
+          </div>
+          <label class="f" for="t-pozn">Co o tom víte<textarea id="t-pozn" name="poznamka" rows="3" placeholder="např. dědí po rodičích, stěhuje se, chce prodat do jara"></textarea></label>
+          <label class="check" for="t-souhlas"><input type="checkbox" id="t-souhlas" name="prodavajici_souhlasi" value="ano" data-must="Kontakt mi můžete poslat jen se souhlasem dotyčného."><span>Dotyčný ví, že mi kontakt posíláte, a souhlasí, že mu zavolám.</span></label>
+        </fieldset>
+        <fieldset style="margin-top:1.4rem">
+          <legend>Vaše údaje, ať vím, komu poděkovat</legend>
+          <div class="two">
+            <label class="f" for="t-mjmeno">Vaše jméno<input id="t-mjmeno" name="jmeno" type="text" autocomplete="name" data-req="Napište prosím své jméno."></label>
+            <label class="f" for="t-mtel">Váš telefon<input id="t-mtel" name="telefon" type="tel" autocomplete="tel" inputmode="tel" data-tel></label>
+          </div>
+          <label class="f" for="t-mmail">E-mail, nepovinný<input id="t-mmail" name="email" type="email" autocomplete="email"></label>
+          <label class="check" for="t-gdpr"><input type="checkbox" id="t-gdpr" name="souhlas" value="ano" data-must="Bez souhlasu se vám nemůžu ozvat."><span>Souhlasím, že mě budete kontaktovat kvůli tipu a výplatě odměny.</span></label>
+        </fieldset>
+        <div class="done stack" hidden></div>
+        <p class="err" aria-live="polite"></p>
+        <div class="form-nav"><button type="submit" class="btn mark js-next" style="margin-left:auto">Poslat tip</button></div>
+      </form>
+
+      <!-- 3) DOTAZ -->
+      <form class="form-box lead-form" id="panel-dotaz" role="tabpanel" aria-labelledby="tab-dotaz" data-form="dotaz" novalidate hidden>
+        <fieldset>
+          <legend>Na co se chcete zeptat?</legend>
+          <label class="f" for="d-zprava">Váš dotaz<textarea id="d-zprava" name="zprava" rows="4" data-req="Napište prosím, na co se chcete zeptat."></textarea></label>
+          <div class="two">
+            <label class="f" for="d-jmeno">Jméno<input id="d-jmeno" name="jmeno" type="text" autocomplete="name" data-req="Napište prosím své jméno."></label>
+            <label class="f" for="d-tel">Telefon<input id="d-tel" name="telefon" type="tel" autocomplete="tel" inputmode="tel"></label>
+          </div>
+          <label class="f" for="d-mail">E-mail<input id="d-mail" name="email" type="email" autocomplete="email"></label>
+          <p class="fine" style="margin-top:-.5rem">Stačí telefon, nebo e-mail.</p>
+          <label class="check" for="d-gdpr"><input type="checkbox" id="d-gdpr" name="souhlas" value="ano" data-must="Bez souhlasu se vám nemůžu ozvat."><span>Souhlasím, že mě budete kontaktovat kvůli mému dotazu.</span></label>
+        </fieldset>
+        <div class="done stack" hidden></div>
+        <p class="err" aria-live="polite"></p>
+        <div class="form-nav"><button type="submit" class="btn js-next" style="margin-left:auto">Odeslat dotaz</button></div>
+      </form>
+    </div>
+  </section>
+
+  <section id="kontakt">
+    <div class="wrap contact">
+      <h2>Nebo rovnou zavolejte</h2>
+      <p class="num" id="phone">732 888 546</p>
+      <div class="row" style="justify-content:center">
+        <a class="btn" href="tel:+420732888546">Zavolat</a>
+        <a class="btn ghost" href="sms:+420732888546">Poslat SMS</a>
+        <button class="btn ghost" type="button" id="copy">Zkopírovat číslo</button>
+      </div>
+      <p class="copied" id="copied" aria-live="polite"></p>
+      <p class="muted">E-mail: <span style="user-select:all">najdumaklere@seznam.cz</span></p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>najdumaklere.cz · Plzeň a okolí</span>
+    <span>Nejsem realitní zprostředkovatel, doporučuji ověřené makléře a hypoteční specialisty. Osobní údaje používám jen k vyřízení vašeho dotazu.</span>
+  </div>
+</footer>
+
+<script>
+/* ODESLÁNÍ: tady se později napojí skutečné odesílání (stejně jako na webu Důstojný život).
+   Funkce dostane typ formuláře ("prodej" | "tip" | "dotaz") a objekt s poli. Musí vrátit Promise. */
+window.sendLead = window.sendLead || function(type, data){
+  return Promise.resolve({preview:true});
+};
+
+(function(){
+  var LABELS={prodej:'Prodej a poradenství',tip:'Tip na prodej',dotaz:'Dotaz'};
+  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
+  function openTab(name){
+    tabs.forEach(function(t){var on=t.id==='tab-'+name;t.setAttribute('aria-selected',on);t.tabIndex=on?0:-1;document.getElementById(t.getAttribute('aria-controls')).hidden=!on;});
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){openTab(t.id.slice(4));});
+    t.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var n=tabs[(i+(e.key==='ArrowRight'?1:tabs.length-1))%tabs.length];n.focus();n.click();}});
+  });
+  document.querySelectorAll('[data-tab]').forEach(function(a){
+    a.addEventListener('click',function(){openTab(a.getAttribute('data-tab'));var pick=a.getAttribute('data-pick');if(pick){var r=document.getElementById(pick);if(r)r.checked=true;}});
+  });
+
+  function validate(scope){
+    var els=scope.querySelectorAll('input,textarea,select');
+    for(var i=0;i<els.length;i++){
+      var el=els[i];
+      if(el.hasAttribute('data-req')&&!el.value.trim())return [el,el.getAttribute('data-req')];
+      if(el.hasAttribute('data-tel')&&el.value.replace(/\D/g,'').length<9)return [el,el.getAttribute('data-tel')||'Zkontrolujte prosím telefon, chybí číslice.'];
+      if(el.hasAttribute('data-must')&&!el.checked)return [el,el.getAttribute('data-must')];
+    }
+    var radios=scope.querySelectorAll('input[type=radio]');
+    if(radios.length&&!scope.querySelector('input[type=radio]:checked'))return [radios[0],'Vyberte prosím jednu možnost.'];
+    if(scope.closest('form').dataset.form==='dotaz'&&scope.tagName==='FORM'){
+      var t=scope.querySelector('[name=telefon]').value.replace(/\D/g,''),m=scope.querySelector('[name=email]').value.trim();
+      if(t.length<9&&!/.+@.+\..+/.test(m))return [scope.querySelector('[name=telefon]'),'Vyplňte prosím telefon, nebo e-mail.'];
+    }
+    return null;
+  }
+
+  document.querySelectorAll('.lead-form').forEach(function(form){
+    var type=form.dataset.form;
+    var steps=[].slice.call(form.querySelectorAll('fieldset[data-step]'));
+    var bars=[].slice.call(form.querySelectorAll('.progress i'));
+    var back=form.querySelector('.js-back'),next=form.querySelector('.js-next'),err=form.querySelector('.err'),done=form.querySelector('.done');
+    var cur=0;
+    function show(i){cur=i;steps.forEach(function(s,k){s.hidden=k!==i;});bars.forEach(function(b,k){b.classList.toggle('on',k<=i);});if(back)back.hidden=i===0;next.textContent=i===steps.length-1?'Odeslat':'Pokračovat';err.textContent='';}
+    if(back)back.addEventListener('click',function(){if(cur>0)show(cur-1);});
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var scope=steps.length?steps[cur]:form;
+      var bad=validate(scope);
+      if(bad){err.textContent=bad[1];bad[0].focus();return;}
+      if(steps.length&&cur<steps.length-1){show(cur+1);return;}
+      var data={typ_formulare:LABELS[type]};
+      new FormData(form).forEach(function(v,k){if(String(v).trim())data[k]=v;});
+      next.disabled=true;err.textContent='';
+      window.sendLead(type,data).then(function(res){
+        form.querySelectorAll('fieldset,.progress,.form-nav').forEach(function(x){x.hidden=true;});
+        var lines=Object.keys(data).map(function(k){return k.replace(/_/g,' ')+': '+data[k];}).join('\n');
+        done.innerHTML='';
+        var h=document.createElement('p');h.className='done-title';h.textContent=type==='tip'?'Děkuji za tip, ozvu se':'Děkuji, ozvu se';done.appendChild(h);
+        if(res&&res.preview){var p=document.createElement('p');p.className='muted';p.textContent='Náhled webu: formulář se zatím nikam neodesílá. Na ostrém webu by mi přišla tato zpráva:';done.appendChild(p);var pre=document.createElement('div');pre.className='summary';pre.textContent=lines;done.appendChild(pre);}
+        done.hidden=false;
+      },function(){next.disabled=false;err.textContent='Zprávu se nepodařilo odeslat. Zkuste to prosím znovu, nebo zavolejte na 732 888 546.';});
+    });
+  });
+
+  document.getElementById('copy').addEventListener('click',function(){
+    var out=document.getElementById('copied');
+    var fb=function(){var r=document.createRange();r.selectNodeContents(document.getElementById('phone'));var sel=getSelection();sel.removeAllRanges();sel.addRange(r);out.textContent='Číslo je označené, zkopírujte ho.';};
+    try{navigator.clipboard.writeText('732888546').then(function(){out.textContent='Číslo je zkopírované.';},fb);}catch(e){fb();}
+  });
+})();
+</script>
+</html>
