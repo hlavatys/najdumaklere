@@ -3,8 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="robots" content="noindex">
 <title>Najdu makléře | Plzeň a okolí</title>
+<meta name="description" content="Chcete prodat byt, dům, chalupu nebo pozemek v Plzni a okolí? Podle typu nemovitosti vyberu správného makléře s hotovými kupci. Nezávazně, i exekuce, podíl nebo dědictví.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="cs_CZ">
+<meta property="og:url" content="https://najdumaklere.cz/">
+<meta property="og:title" content="Zvažujete prodat nemovitost? Najdu vám správného makléře">
+<meta property="og:description" content="Plzeň a okolí. Makléř vybraný podle typu nemovitosti, kupci z více realitek. Za úspěšný tip 5 000 Kč.">
+<meta name="theme-color" content="#ffdd55">
+<link rel="canonical" href="https://najdumaklere.cz/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ffdd55'/%3E%3Cpath d='M14 34 32 18l18 16v14H14z' fill='none' stroke='%231a1a18' stroke-width='5' stroke-linejoin='round'/%3E%3Ccircle cx='32' cy='38' r='5' fill='%231a1a18'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
@@ -52,7 +60,7 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(6px);border-bottom:2px solid var(--line)}
 .top .wrap{display:flex;align-items:center;gap:18px;padding-block:10px}
 .brand{font-family:var(--display);font-size:1.55rem;text-decoration:none;white-space:nowrap}
-.nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav{display:flex;gap:4px;margin-left:auto;flex-wrap:nowrap}
 .nav a{text-decoration:none;padding:.3rem .65rem;border-radius:999px;font-size:.95rem}
 .nav a:hover{background:var(--wash)}
 .top .call{font-family:var(--display);font-size:1.35rem;text-decoration:none;background:var(--ink);color:var(--paper);padding:.25rem .9rem;border-radius:999px;white-space:nowrap}
@@ -202,6 +210,46 @@ label.f input:focus,label.f select:focus,label.f textarea:focus{border-color:var
 
 footer{padding-block:2rem;font-size:.88rem;color:var(--ink-soft);border-top:2px solid var(--line)}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem 2rem}
+
+/* v2: lišta s e-mailem, rozklikávací případy, sdílení */
+.top .mail{display:inline-flex;align-items:center;gap:.4rem;text-decoration:none;font-size:.95rem;padding:.3rem .5rem;border-radius:999px;white-space:nowrap}
+.top .mail:hover{background:var(--wash)}
+@media (max-width:1100px){.top .mail span{display:none}}
+@media (max-width:860px){.top .mail{margin-left:auto}.top .call{margin-left:0}.top .wrap{gap:8px}}
+@media (max-width:420px){.brand{font-size:1.3rem}.top .call{font-size:1.15rem;padding:.25rem .7rem}}
+.cmp tbody[hidden]{display:none}
+#cmp-toggle{margin-top:.4rem}
+.cases{display:flex;flex-direction:column;gap:10px;margin-top:1rem}
+details.case{background:var(--card);border:2px solid var(--line);border-radius:14px;padding:.8rem 1rem}
+details.case summary{font-family:var(--display);font-weight:400;font-size:1.5rem}
+details.case p{margin-top:.5rem}
+details.case .key{color:var(--ink);font-weight:700}
+.shared{font-size:.95rem;color:var(--ok);min-height:1.3em}
+.mcall{display:none;position:fixed;left:12px;right:12px;bottom:max(12px,env(safe-area-inset-bottom,0px));z-index:30;justify-content:center;align-items:center;gap:.5rem;font-family:var(--display);font-size:1.5rem;text-decoration:none;background:var(--marker);color:var(--on-marker);border:2.5px solid var(--line);border-radius:999px;padding:.55rem 1rem;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+/* mobil: čitelnost a ovládání */
+@media (max-width:640px){
+  body{font-size:1.125rem}
+  .lead,.hero .lead{font-size:1.15rem}
+  .fine,.check,.note{font-size:1rem}
+  .opt span small{font-size:.95rem}
+  .card p,ol.flow p,ol.steps p{font-size:1.02rem}
+  .btn{padding:.9rem 1.4rem;font-size:1.05rem}
+  .row .btn{width:100%;justify-content:center}
+  label.f input,label.f select,label.f textarea{font-size:1.05rem;padding:.8rem .9rem}
+  .tabs [role=tab]{padding:.6rem .75rem;font-size:.98rem}
+  .cmp-wrap{overflow:visible}
+  table.cmp{min-width:0}
+  .cmp thead{display:none}
+  .cmp tr{display:block;border-bottom:1.5px solid var(--hair);padding:.5rem 0}
+  .cmp .group{border-bottom:0;padding-top:1rem}
+  .cmp .group th{display:block;padding:.4rem 0}
+  .cmp th,.cmp td{display:block;padding:.25rem 0;border:0!important;background:none!important}
+  .cmp tbody th{font-size:1.05rem}
+  .cmp td::before{content:attr(data-label);display:block;font-size:.85rem;color:var(--ink-soft);font-weight:700}
+  .cmp td.pro{background:var(--card)!important;border-left:3px solid var(--line)!important;padding:.4rem .7rem!important;margin-top:.3rem;border-radius:8px}
+  main{padding-bottom:72px}
+  .mcall{display:flex}
+}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.path{transition:none}.path:hover{transform:none}}
 </style>
 
@@ -212,10 +260,9 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem
       <a href="#prodat">Chci prodat</a>
       <a href="#problem">Složité případy</a>
       <a href="#tip">Vím o někom</a>
-      <a href="#finance">Hypotéka</a>
-      <a href="#formular" data-tab="tip">Poslat tip</a>
-      <a href="#formular" data-tab="prodej">Formulář</a>
+            <a href="#formular" data-tab="prodej">Formulář</a>
     </nav>
+    <a class="mail" href="mailto:najdumaklere@seznam.cz" aria-label="E-mail najdumaklere@seznam.cz"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span>najdumaklere@seznam.cz</span></a>
     <a class="call" href="tel:+420732888546">732 888 546</a>
   </div>
 </header>
@@ -237,10 +284,8 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem
           <h3>Co ode mě dostanete</h3>
           <ul>
             <li>Makléře vybraného podle typu a náročnosti nemovitosti</li>
-            <li>Oslovení kupců z databází více realitek najednou</li>
-            <li>Lepší podmínky, než kdybyste šli do realitky sami</li>
-            <li>Pomoc s financováním, pro vás i pro kupce</li>
-            <li>Jednoho člověka na telefonu od začátku do konce</li>
+            <li>Kupce z databází více realitek najednou</li>
+            <li>Lepší podmínky a jednoho člověka na telefonu od začátku do konce</li>
           </ul>
         </aside>
       </div>
@@ -258,12 +303,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem
       <div class="stack">
         <p class="eyebrow">Proč přes mě</p>
         <h2>Jedna realitka má své kupce. Já jich znám víc.</h2>
-        <p class="lead">Když jdete do jedné kanceláře, nabídku uvidí hlavně její klienti. Já mám kontakty na makléře z více realitek. Každý z nich má v databázi lidi, kteří už v okolí chtěli koupit a nevyšlo jim to. Ty můžu oslovit dřív, než se nemovitost vůbec objeví na portálech.</p>
-        <div class="facts">
-          <div class="fact"><b>Specialista</b><span class="muted">Na byty, domy, pozemky, chalupy i historické stavby jiný makléř.</span></div>
-          <div class="fact"><b>Hotoví kupci</b><span class="muted">Lidé z databází, kteří už hledají a mají připravené peníze.</span></div>
-          <div class="fact"><b>Lepší podmínky</b><span class="muted">Díky doporučení ode mě máte výhodnější podmínky.</span></div>
-        </div>
+        <p class="lead">Jedna kancelář osloví hlavně svoje klienty. Já znám makléře z více realitek a jejich kupce, kteří v okolí neúspěšně hledali. Ty můžu oslovit dřív, než se nemovitost objeví na portálech.</p>
       </div>
       <figure class="net" aria-label="Schéma: vy, já a makléři z více realitek, každý se svými kupci" style="margin:0">
         <svg viewBox="0 0 520 420" role="img">
@@ -306,43 +346,37 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem
         <table class="cmp">
           <thead><tr><th scope="col"></th><th scope="col">Prodej sám</th><th scope="col" class="pro">S makléřem přes mě</th></tr></thead>
           <tbody>
-            <tr class="group"><th colspan="3" scope="colgroup">Cena</th></tr>
-            <tr><th scope="row">Nacenění</th><td><span class="x" aria-hidden="true">✗</span>Odhad podle inzerátů sousedů</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Cena podle skutečných prodejů v okolí</td></tr>
-            <tr><th scope="row">Znalecký posudek</th><td><span class="x" aria-hidden="true">✗</span>Musíte shánět sami</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Zajistí ověřeného znalce, když je potřeba</td></tr>
-            <tr><th scope="row">Vyjednávání</th><td><span class="x" aria-hidden="true">✗</span>Emoce, slevy pod tlakem</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Zkušený vyjednavač drží cenu</td></tr>
-
-            <tr class="group"><th colspan="3" scope="colgroup">Prezentace</th></tr>
-            <tr><th scope="row">Fotky</th><td><span class="x" aria-hidden="true">✗</span>Z mobilu, tmavé a křivé</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Profesionální fotograf</td></tr>
-            <tr><th scope="row">Záběry z dronu</th><td><span class="x" aria-hidden="true">✗</span>Bez nich</td><td class="pro"><span class="v" aria-hidden="true">✓</span>U domů a pozemků pohled shora na celý pozemek</td></tr>
-            <tr><th scope="row">Home staging</th><td><span class="x" aria-hidden="true">✗</span>Prázdné nebo přeplněné pokoje</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Úprava interiéru, aby si kupec uměl představit bydlení</td></tr>
-            <tr><th scope="row">Inzerce</th><td><span class="x" aria-hidden="true">✗</span>Jeden inzerát, který zapadne</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Hlavní portály, sociální sítě, dobře napsaný text</td></tr>
-
-            <tr class="group"><th colspan="3" scope="colgroup">Kupci</th></tr>
-            <tr><th scope="row">Zájemci</th><td><span class="x" aria-hidden="true">✗</span>Jen ti, kdo náhodou uvidí inzerát</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Databáze kupců z více realitek, kteří už v okolí hledali</td></tr>
-            <tr><th scope="row">Prohlídky</th><td><span class="x" aria-hidden="true">✗</span>Telefony a víkendy navíc</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Makléř je domluví i provede</td></tr>
-            <tr><th scope="row">Financování kupce</th><td><span class="x" aria-hidden="true">✗</span>Kupec bez hypotéky odpadne</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Doporučím hypotečního specialistu</td></tr>
-
-            <tr class="group"><th colspan="3" scope="colgroup">Právo a bezpečnost</th></tr>
-            <tr><th scope="row">Smlouvy</th><td><span class="x" aria-hidden="true">✗</span>Vzory z internetu, riziko chyb</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Kompletní právní servis</td></tr>
-            <tr><th scope="row">Peníze</th><td><span class="x" aria-hidden="true">✗</span>Platba „na ruku“ nebo předem</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Úschova u advokáta, notáře nebo v bance</td></tr>
-            <tr><th scope="row">Kupec</th><td><span class="x" aria-hidden="true">✗</span>Riziko podvodu</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Prověření kupci</td></tr>
-
-            <tr class="group"><th colspan="3" scope="colgroup">Čas a starosti</th></tr>
-            <tr><th scope="row">Dokumenty</th><td><span class="x" aria-hidden="true">✗</span>Úřady, katastr, energetický štítek</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Makléř zajistí, co je potřeba</td></tr>
-            <tr><th scope="row">Předání</th><td><span class="x" aria-hidden="true">✗</span>Měřáky, přepisy energií, protokol</td><td class="pro"><span class="v" aria-hidden="true">✓</span>Předávací protokol a přepisy pohlídá</td></tr>
+            <tr><th scope="row">Nacenění</th><td data-label="Prodej sám"><span class="x" aria-hidden="true">✗</span>Odhad podle inzerátů sousedů</td><td class="pro" data-label="S makléřem přes mě"><span class="v" aria-hidden="true">✓</span>Cena podle skutečných prodejů v okolí</td></tr>
+            <tr><th scope="row">Zájemci</th><td data-label="Prodej sám"><span class="x" aria-hidden="true">✗</span>Jen ti, kdo náhodou uvidí inzerát</td><td class="pro" data-label="S makléřem přes mě"><span class="v" aria-hidden="true">✓</span>Databáze kupců z více realitek, kteří už v okolí hledali</td></tr>
+            <tr><th scope="row">Vyjednávání</th><td data-label="Prodej sám"><span class="x" aria-hidden="true">✗</span>Emoce, slevy pod tlakem</td><td class="pro" data-label="S makléřem přes mě"><span class="v" aria-hidden="true">✓</span>Zkušený vyjednavač drží cenu</td></tr>
+            <tr><th scope="row">Právní vady</th><td data-label="Prodej sám"><span class="x" aria-hidden="true">✗</span>Zjistíte až u podpisu, nebo je najde kupec</td><td class="pro" data-label="S makléřem přes mě"><span class="v" aria-hidden="true">✓</span>Kontrola listu vlastnictví, zástav, břemen, předkupních práv a exekucí předem</td></tr>
+            <tr><th scope="row">Smlouvy</th><td data-label="Prodej sám"><span class="x" aria-hidden="true">✗</span>Vzory z internetu, riziko chyb</td><td class="pro" data-label="S makléřem přes mě"><span class="v" aria-hidden="true">✓</span>Smlouvy připraví advokát nebo právní servis kanceláře</td></tr>
+            <tr><th scope="row">Peníze</th><td data-label="Prodej sám"><span class="x" aria-hidden="true">✗</span>Platba „na ruku“ nebo předem</td><td class="pro" data-label="S makléřem přes mě"><span class="v" aria-hidden="true">✓</span>Úschova u advokáta, notáře nebo v bance</td></tr>
+          </tbody>
+          <tbody id="cmp-more" hidden>
+            <tr><th scope="row">Znalecký posudek</th><td data-label="Prodej sám"><span class="x" aria-hidden="true">✗</span>Musíte shánět sami</td><td class="pro" data-label="S makléřem přes mě"><span class="v" aria-hidden="true">✓</span>Zajistí ověřeného znalce, když je potřeba</td></tr>
+            <tr><th scope="row">Fotky</th><td data-label="Prodej sám"><span class="x" aria-hidden="true">✗</span>Z mobilu, tmavé a křivé</td><td class="pro" data-label="S makléřem přes mě"><span class="v" aria-hidden="true">✓</span>Profesionální fotograf</td></tr>
+            <tr><th scope="row">Záběry z dronu</th><td data-label="Prodej sám"><span class="x" aria-hidden="true">✗</span>Bez nich</td><td class="pro" data-label="S makléřem přes mě"><span class="v" aria-hidden="true">✓</span>Podle typu nemovitosti, hlavně u domů, chalup a pozemků</td></tr>
+            <tr><th scope="row">Home staging</th><td data-label="Prodej sám"><span class="x" aria-hidden="true">✗</span>Prázdné nebo přeplněné pokoje</td><td class="pro" data-label="S makléřem přes mě"><span class="v" aria-hidden="true">✓</span>Kde to dává smysl, úprava interiéru pro lepší dojem kupce</td></tr>
+            <tr><th scope="row">Inzerce</th><td data-label="Prodej sám"><span class="x" aria-hidden="true">✗</span>Jeden inzerát, který zapadne</td><td class="pro" data-label="S makléřem přes mě"><span class="v" aria-hidden="true">✓</span>Hlavní portály, sociální sítě, dobře napsaný text</td></tr>
+            <tr><th scope="row">Prohlídky</th><td data-label="Prodej sám"><span class="x" aria-hidden="true">✗</span>Telefony a víkendy navíc</td><td class="pro" data-label="S makléřem přes mě"><span class="v" aria-hidden="true">✓</span>Makléř je domluví i provede</td></tr>
+            <tr><th scope="row">Financování kupce</th><td data-label="Prodej sám"><span class="x" aria-hidden="true">✗</span>Kupec bez hypotéky odpadne</td><td class="pro" data-label="S makléřem přes mě"><span class="v" aria-hidden="true">✓</span>Doporučím hypotečního specialistu</td></tr>
+            <tr><th scope="row">Kupec</th><td data-label="Prodej sám"><span class="x" aria-hidden="true">✗</span>Riziko podvodu</td><td class="pro" data-label="S makléřem přes mě"><span class="v" aria-hidden="true">✓</span>Prověření kupci</td></tr>
+            <tr><th scope="row">Památková ochrana</th><td data-label="Prodej sám"><span class="x" aria-hidden="true">✗</span>Nevíte, co smíte a co musí kupec vědět</td><td class="pro" data-label="S makléřem přes mě"><span class="v" aria-hidden="true">✓</span>Ověření, zda jde o kulturní památku nebo památkovou zónu, a upozornění kupce</td></tr>
+            <tr><th scope="row">Dokumenty</th><td data-label="Prodej sám"><span class="x" aria-hidden="true">✗</span>Úřady, katastr, energetický štítek</td><td class="pro" data-label="S makléřem přes mě"><span class="v" aria-hidden="true">✓</span>Makléř zajistí, co je potřeba</td></tr>
+            <tr><th scope="row">Předání</th><td data-label="Prodej sám"><span class="x" aria-hidden="true">✗</span>Měřáky, přepisy energií, protokol</td><td class="pro" data-label="S makléřem přes mě"><span class="v" aria-hidden="true">✓</span>Předávací protokol a přepisy pohlídá</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="fine">Rozsah služeb se u jednotlivých makléřů liší. Co přesně kdo nabízí, vám vždy řeknu předem.</p>
+      <button type="button" class="btn ghost" id="cmp-toggle" aria-expanded="false" aria-controls="cmp-more">Zobrazit celé srovnání (11 dalších)</button>
+      <p class="fine">Rozsah služeb se liší podle makléře a podle nemovitosti. Dron, home staging nebo znalec se volí podle toho, co se u vaší nemovitosti vyplatí. Co přesně kdo nabízí, vám vždy řeknu předem.</p>
 
       <h3 style="margin-top:1.6rem">Jak to probíhá</h3>
       <ol class="flow">
         <li><strong>Ozvete se</strong><p>Zavoláte nebo vyplníte krátký formulář. Nezávazně, nic nepodepisujete.</p></li>
-        <li><strong>Vyberu makléře</strong><p>Podle typu nemovitosti, lokality a náročnosti. Zjistím, kdo má v databázi vhodné kupce.</p></li>
-        <li><strong>Nacenění</strong><p>Makléř stanoví cenu podle skutečných prodejů, případně zajistí znalecký posudek.</p></li>
-        <li><strong>Prezentace a kupci</strong><p>Fotky, dron, home staging podle potřeby. Nejdřív se oslovují kupci z databází, pak portály.</p></li>
-        <li><strong>Financování</strong><p>Když kupec potřebuje hypotéku, nebo vy na nové bydlení, doporučím specialistu.</p></li>
-        <li><strong>Smlouvy a předání</strong><p>Rezervace, kupní smlouva, úschova peněz, katastr a předání. Vy jen podepisujete.</p></li>
+        <li><strong>Vyberu makléře</strong><p>Podle typu nemovitosti, lokality a náročnosti. Takového, který má vhodné kupce.</p></li>
+        <li><strong>Nacenění a prodej</strong><p>Makléř stanoví cenu, připraví prezentaci a osloví kupce, nejdřív z databází.</p></li>
+        <li><strong>Smlouvy a předání</strong><p>Rezervace, kupní smlouva, úschova peněz, katastr. Vy jen podepisujete.</p></li>
       </ol>
       <div class="row" style="margin-top:1rem"><a class="btn" href="#formular" data-tab="prodej" data-pick="p-what-sell">Chci poradit s prodejem</a></div>
     </div>
@@ -352,57 +386,22 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem
     <div class="wrap stack">
       <p class="eyebrow">Složité případy</p>
       <h2>Exekuce, insolvence, podíl nebo dědictví?</h2>
-      <p class="lead">I taková nemovitost se dá prodat, jen to chce makléře, který to už řešil. Tady je základní přehled, co jde a co je potřeba.</p>
-      <div class="cards">
-        <article class="card">
-          <h3>Exekuce</h3>
-          <p>Na nemovitosti platí zákaz s ní nakládat. Prodej je ale možný se souhlasem exekutora a z peněz se uhradí dluh.</p>
-          <p class="key">Dobrovolný prodej bývá výhodnější než dražba, která často končí pod tržní cenou.</p>
-        </article>
-        <article class="card">
-          <h3>Insolvence</h3>
-          <p>O prodeji majetku v insolvenci rozhoduje insolvenční správce. Makléř s ním může spolupracovat a pomoct prodat za lepší cenu.</p>
-          <p class="key">Čím dřív se to řeší, tím víc možností zůstává.</p>
-        </article>
-        <article class="card">
-          <h3>Spoluvlastnický podíl</h3>
-          <p>Svůj podíl můžete prodat i bez souhlasu ostatních spoluvlastníků. U podílu získaného děděním mají ostatní spoluvlastníci 6 měsíců předkupní právo.</p>
-          <p class="key">Podíl se prodává jinak než celá nemovitost, proto je důležitý zkušený makléř.</p>
-        </article>
-        <article class="card">
-          <h3>Dědictví</h3>
-          <p>Prodat můžete po skončení dědického řízení, kdy usnesení notáře nabude právní moci. Do té doby se dá připravit nacenění i kupec.</p>
-          <p class="key">Víc dědiců? Dá se prodat společně, nebo jeden vyplatí ostatní.</p>
-        </article>
-        <article class="card">
-          <h3>Špatný stav</h3>
-          <p>Zatékající střecha, vlhkost, nedokončená stavba. Pro takové nemovitosti existují kupci, kteří rekonstrukci hledají.</p>
-          <p class="key">Neopravujte nic předem, nejdřív se poraďte, co se vyplatí.</p>
-        </article>
-        <article class="card">
-          <h3>Zástava a břemena</h3>
-          <p>Hypotéka na nemovitosti prodej nebrání, splatí se z kupní ceny. Věcné břemeno nebo nejasné hranice pozemku se dají vyřešit předem.</p>
-          <p class="key">Stačí list vlastnictví a makléř řekne, co s tím.</p>
-        </article>
+      <p class="lead">I taková nemovitost se dá prodat, jen to chce makléře, který to už řešil. Klikněte na svou situaci.</p>
+      <div class="cases">
+        <details class="case"><summary>Exekuce</summary><p>Na nemovitosti platí zákaz s ní nakládat. Prodej je ale možný se souhlasem exekutora a z peněz se uhradí dluh.</p> <p class="key">Dobrovolný prodej bývá výhodnější než dražba, která často končí pod tržní cenou.</p></details>
+        <details class="case"><summary>Insolvence</summary><p>O prodeji majetku v insolvenci rozhoduje insolvenční správce. Makléř s ním může spolupracovat a pomoct prodat za lepší cenu.</p> <p class="key">Čím dřív se to řeší, tím víc možností zůstává.</p></details>
+        <details class="case"><summary>Spoluvlastnický podíl</summary><p>Svůj podíl můžete prodat i bez souhlasu ostatních spoluvlastníků. U podílu získaného děděním mají ostatní spoluvlastníci 6 měsíců předkupní právo.</p> <p class="key">Podíl se prodává jinak než celá nemovitost, proto je důležitý zkušený makléř.</p></details>
+        <details class="case"><summary>Dědictví</summary><p>Prodat můžete po skončení dědického řízení, kdy usnesení notáře nabude právní moci. Do té doby se dá připravit nacenění i kupec.</p> <p class="key">Víc dědiců? Dá se prodat společně, nebo jeden vyplatí ostatní.</p></details>
+        <details class="case"><summary>Špatný stav</summary><p>Zatékající střecha, vlhkost, nedokončená stavba. Pro takové nemovitosti existují kupci, kteří rekonstrukci hledají.</p> <p class="key">Neopravujte nic předem, nejdřív se poraďte, co se vyplatí.</p></details>
+        <details class="case"><summary>Památka nebo památková zóna</summary><p>Kulturní památku i dům v památkové zóně lze prodat. Kupec ale musí předem vědět o omezeních při opravách a stavebních úpravách, které schvaluje památkový úřad.</p> <p class="key">Makléř stav ověří a do inzerce i smlouvy ho uvede, aby prodej později nikdo nezpochybnil.</p></details>
+        <details class="case"><summary>Zástava a břemena</summary><p>Hypotéka na nemovitosti prodej nebrání, splatí se z kupní ceny. Věcné břemeno nebo nejasné hranice pozemku se dají vyřešit předem.</p> <p class="key">Stačí list vlastnictví a makléř řekne, co s tím.</p></details>
       </div>
       <p class="fine">Jde o základní informace, ne o právní radu. Konkrétní postup vždy řeší makléř s advokátem podle vaší situace.</p>
       <div class="row"><a class="btn" href="#formular" data-tab="prodej" data-pick="p-what-hard">Chci poradit se složitým případem</a></div>
     </div>
   </section>
 
-  <section id="finance">
-    <div class="wrap stack">
-      <p class="eyebrow">Hypotéka a financování</p>
-      <h2>Celý proces, i peníze</h2>
-      <p class="lead">Prodej často souvisí s koupí nového bydlení, splacením staré hypotéky nebo tím, že kupec potřebuje úvěr. Na to mám ověřené hypoteční specialisty.</p>
-      <div class="fin">
-        <div><b>Hypotéka pro kupce</b><span class="muted">Kupec s vyřízeným financováním znamená jistější a rychlejší prodej.</span></div>
-        <div><b>Nové bydlení pro vás</b><span class="muted">Když prodáváte, abyste koupili jinde, pomůžu sladit prodej s novou hypotékou.</span></div>
-        <div><b>Splacení staré hypotéky</b><span class="muted">Zbytek úvěru se splatí z kupní ceny. Specialista ohlídá poplatky a termíny.</span></div>
-      </div>
-    </div>
-  </section>
-
+  
   <section class="band" id="tip">
     <div class="wrap tip-grid">
       <div class="stack">
@@ -419,7 +418,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem
           <li><div><strong>Po prodeji vám zaplatím</strong><p>Odměnu vyplácím po podpisu kupní smlouvy a zaplacení provize. Převodem nebo hotově proti potvrzení.</p></div></li>
         </ol>
         <p class="note">Úspěšný tip znamená, že prodej proběhne přes makléře, kterého jsem doporučil, a o nemovitosti jsem do té doby nevěděl.</p>
-        <a class="btn mark" href="#formular" data-tab="tip">Poslat tip přes formulář</a>
+        <div class="row"><a class="btn mark" href="#formular" data-tab="tip">Poslat tip přes formulář</a><button type="button" class="btn ghost js-share">Poslat odkaz známému</button></div>
       </div>
     </div>
   </section>
@@ -431,6 +430,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem
         <details><summary>Kolik mě to stojí?</summary><p>Rozhovor se mnou je nezávazný. Provizi platíte makléři z prodeje a díky mému doporučení za lepších podmínek. Přesné podmínky vám řeknu podle konkrétní nemovitosti.</p></details>
         <details><summary>Proč nejít rovnou do realitky?</summary><p>Můžete. Jedna realitka ale osloví hlavně svoje kupce. Já znám makléře z více kanceláří, vím, kdo se na co hodí, a můžu oslovit kupce z více databází.</p></details>
         <details><summary>Jste makléř?</summary><p>Nejsem, makléře vám doporučím a zůstávám vám k dispozici po celou dobu. Prodej vede makléř a jeho kancelář, včetně smluv a úschovy peněz.</p></details>
+        <details><summary>Pomůžete s hypotékou?</summary><p>Hypotéky sám nezprostředkovávám. Když ji potřebujete vy na nové bydlení, nebo ji potřebuje kupec, doporučím ověřeného hypotečního specialistu. Zbytek staré hypotéky se splatí z kupní ceny.</p></details>
         <details><summary>Jak rychle se nemovitost prodá?</summary><p>Záleží na typu, ceně a lokalitě. Když makléř najde kupce ve své databázi, může to být během pár týdnů. Běžně počítejte se dvěma až třemi měsíci.</p></details>
         <details><summary>Kdy dostanu odměnu za tip?</summary><p>Po podpisu kupní smlouvy a zaplacení provize. Obvykle během několika týdnů až měsíců od vašeho tipu.</p></details>
       </div>
@@ -450,13 +450,14 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem
 
       <!-- 1) PRODEJ: vícekrokový -->
       <form class="form-box lead-form" id="panel-prodej" role="tabpanel" aria-labelledby="tab-prodej" data-form="prodej" novalidate>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
         <div class="progress" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
         <fieldset data-step>
           <legend>Co řešíte?</legend>
           <div class="opts">
             <label class="opt"><input type="radio" name="co_resite" id="p-what-sell" value="Chci prodat"><span>Chci prodat<small>byt, dům, chalupu, pozemek</small></span></label>
             <label class="opt"><input type="radio" name="co_resite" id="p-what-hard" value="Složitý případ"><span>Složitý případ<small>exekuce, insolvence, podíl, dědictví</small></span></label>
-            <label class="opt"><input type="radio" name="co_resite" id="p-what-fin" value="Hypotéka"><span>Hypotéka<small>financování koupě nebo prodeje</small></span></label>
+            <label class="opt"><input type="radio" name="co_resite" id="p-what-fin" value="Hypotéka"><span>Hypotéka<small>doporučím hypotečního specialistu</small></span></label>
             <label class="opt"><input type="radio" name="co_resite" id="p-what-info" value="Jen se poradit"><span>Jen se poradit<small>zatím zjišťuji možnosti</small></span></label>
           </div>
         </fieldset>
@@ -496,6 +497,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem
 
       <!-- 2) TIP -->
       <form class="form-box lead-form" id="panel-tip" role="tabpanel" aria-labelledby="tab-tip" data-form="tip" novalidate hidden>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
         <fieldset>
           <legend>O kom víte?</legend>
           <p class="muted" style="margin-top:-.4rem">Za úspěšný tip vám dám 5 000 Kč.</p>
@@ -526,6 +528,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem
 
       <!-- 3) DOTAZ -->
       <form class="form-box lead-form" id="panel-dotaz" role="tabpanel" aria-labelledby="tab-dotaz" data-form="dotaz" novalidate hidden>
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
         <fieldset>
           <legend>Na co se chcete zeptat?</legend>
           <label class="f" for="d-zprava">Váš dotaz<textarea id="d-zprava" name="zprava" rows="4" data-req="Napište prosím, na co se chcete zeptat."></textarea></label>
@@ -551,13 +554,15 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem
       <div class="row" style="justify-content:center">
         <a class="btn" href="tel:+420732888546">Zavolat</a>
         <a class="btn ghost" href="sms:+420732888546">Poslat SMS</a>
-        <button class="btn ghost" type="button" id="copy">Zkopírovat číslo</button>
+        <button class="btn ghost" type="button" id="vcard">Uložit kontakt</button>
+        <button class="btn ghost js-share" type="button">Poslat známému</button>
       </div>
-      <p class="copied" id="copied" aria-live="polite"></p>
+      <p class="copied shared" id="copied" aria-live="polite"></p>
       <p class="muted">E-mail: <span style="user-select:all">najdumaklere@seznam.cz</span></p>
     </div>
   </section>
 </main>
+<a class="mcall" href="tel:+420732888546">Zavolat 732 888 546</a>
 
 <footer>
   <div class="wrap">
@@ -567,10 +572,13 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:.6rem
 </footer>
 
 <script>
-/* ODESLÁNÍ: tady se později napojí skutečné odesílání (stejně jako na webu Důstojný život).
-   Funkce dostane typ formuláře ("prodej" | "tip" | "dotaz") a objekt s poli. Musí vrátit Promise. */
-window.sendLead = window.sendLead || function(type, data){
-  return Promise.resolve({preview:true});
+/* ODESLÁNÍ: Formspree, formulář "web najdu maklere" (najdumaklere@seznam.cz) */
+window.sendLead = function(type, data){
+  var subj={prodej:'Najdu makléře: poptávka prodeje',tip:'Najdu makléře: nový tip',dotaz:'Najdu makléře: dotaz'};
+  var body=Object.assign({_subject:subj[type]||'Najdu makléře: zpráva z webu'},data);
+  if(data.email) body._replyto=data.email;
+  return fetch('https://formspree.io/f/mljjplkj',{method:'POST',headers:{'Accept':'application/json','Content-Type':'application/json'},body:JSON.stringify(body)})
+    .then(function(r){if(!r.ok)throw new Error('send');return {ok:true};});
 };
 
 (function(){
@@ -628,15 +636,33 @@ window.sendLead = window.sendLead || function(type, data){
         var h=document.createElement('p');h.className='done-title';h.textContent=type==='tip'?'Děkuji za tip, ozvu se':'Děkuji, ozvu se';done.appendChild(h);
         if(res&&res.preview){var p=document.createElement('p');p.className='muted';p.textContent='Náhled webu: formulář se zatím nikam neodesílá. Na ostrém webu by mi přišla tato zpráva:';done.appendChild(p);var pre=document.createElement('div');pre.className='summary';pre.textContent=lines;done.appendChild(pre);}
         done.hidden=false;
+        try{if(window.goatcounter&&window.goatcounter.count)window.goatcounter.count({path:'formular-odeslan',title:'Formulář odeslán',event:true});}catch(e){}
       },function(){next.disabled=false;err.textContent='Zprávu se nepodařilo odeslat. Zkuste to prosím znovu, nebo zavolejte na 732 888 546.';});
     });
   });
 
-  document.getElementById('copy').addEventListener('click',function(){
-    var out=document.getElementById('copied');
-    var fb=function(){var r=document.createRange();r.selectNodeContents(document.getElementById('phone'));var sel=getSelection();sel.removeAllRanges();sel.addRange(r);out.textContent='Číslo je označené, zkopírujte ho.';};
-    try{navigator.clipboard.writeText('732888546').then(function(){out.textContent='Číslo je zkopírované.';},fb);}catch(e){fb();}
+  var out=document.getElementById('copied');
+  var tg=document.getElementById('cmp-toggle'),more=document.getElementById('cmp-more');
+  if(tg&&more)tg.addEventListener('click',function(){var open=more.hidden;more.hidden=!open;tg.setAttribute('aria-expanded',open);tg.textContent=open?'Skrýt celé srovnání':'Zobrazit celé srovnání (11 dalších)';});
+  var shareText='Znáš někoho, kdo chce prodat byt, dům nebo pozemek v Plzni a okolí? Tady mu pomůžou najít správného makléře. Za úspěšný tip je odměna 5 000 Kč.';
+  var shareUrl='https://najdumaklere.cz/';
+  document.querySelectorAll('.js-share').forEach(function(b){
+    b.addEventListener('click',function(){
+      if(navigator.share){navigator.share({title:'Najdu makléře',text:shareText,url:shareUrl}).catch(function(){});return;}
+      var msg=shareText+' '+shareUrl;
+      try{navigator.clipboard.writeText(msg).then(function(){if(out)out.textContent='Text s odkazem je zkopírovaný, vložte ho do zprávy.';});}catch(e){window.location.href='mailto:?subject='+encodeURIComponent('Najdu makléře')+'&body='+encodeURIComponent(msg);}
+    });
+  });
+  var vc=document.getElementById('vcard');
+  if(vc)vc.addEventListener('click',function(){
+    var card=['BEGIN:VCARD','VERSION:3.0','N:;Najdu makléře;;;','FN:Najdu makléře','ORG:Najdu makléře','TEL;TYPE=CELL:+420732888546','EMAIL:najdumaklere@seznam.cz','URL:https://najdumaklere.cz/','NOTE:Doporučení správného makléře\, Plzeň a okolí','END:VCARD'].join('\r\n');
+    var blob=new Blob([card],{type:'text/vcard;charset=utf-8'});
+    var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='najdumaklere.vcf';document.body.appendChild(a);a.click();
+    setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},1000);
+    if(out)out.textContent='Kontakt se stahuje, otevřete ho a uložte do telefonu.';
   });
 })();
 </script>
+<script data-goatcounter="https://najdumaklere.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</body>
 </html>
